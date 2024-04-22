@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -384,21 +384,26 @@ MonoBehaviour:
   textSpeed: 0.03
   Dialogue:
   - 'Right, newbie! '
+  - Excited for your first proper case?
+  - "You\u2019ll do great, don\u2019t worry. "
   - "So\u2026"
   - "It\u2019s a man in his late 60s. Sir Guy Thorpe."
   - "He\u2019s sent for us to investigate a break-in where a vase, said to be a precious
     family heirloom, was stolen."
-  - Excited for your first proper case?
-  - "You\u2019ll do great, don\u2019t worry."
+  - "Could he not just\u2026 replace it? Sounds rich enough."
   placement: 0
   text2TMP: {fileID: 1345192072}
-  text3TMP: {fileID: 1345192072}
+  text3TMP: {fileID: 810164215}
   Name:
   - Dolores
   - Dolores
   - Dolores
   - Dolores
-  Name2: 3
+  - Dolores
+  - Dolores
+  - Jaxson
+  - 'Dolores '
+  Name2: 0
   nextSceneName: MAP
   optionsPanel: {fileID: 2063411896}
   option1Button: {fileID: 1518973521}
@@ -1075,7 +1080,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dolores '
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d0c3c74dcea35624e986ad67a006b78a, type: 2}
   m_sharedMaterial: {fileID: 2656073015608564293, guid: d0c3c74dcea35624e986ad67a006b78a, type: 2}

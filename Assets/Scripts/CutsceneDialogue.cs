@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 namespace Photorensic
 {
@@ -17,7 +18,7 @@ namespace Photorensic
         public GameObject surpriseSprite;
         public GameObject ExtraSpriteBlinking; 
 
-        public float textSpeed = 0.05f; // Speed at which the text is displayed
+        public float textSpeed = 0.05f; 
 
         public string[] Dialogue;
         public int placement;
@@ -68,8 +69,9 @@ namespace Photorensic
             string currentText = Dialogue[placement]; // Get the dialogue text for the current placement
             string displayedText = "";
             int textIndex = 0;
-
             text2TMP.text = displayedText;
+           
+
 
             while (textIndex < currentText.Length)
             {
@@ -83,6 +85,7 @@ namespace Photorensic
             {
                 ExtraSprite.SetActive(true);
                 neutralSprite.SetActive(false);
+                happySprite.SetActive(false); 
             }
 
             if (Dialogue[placement].Contains("It’s a man in his late 60s. Sir Guy Thorpe."))
@@ -103,12 +106,21 @@ namespace Photorensic
                 optionsDisplayed = true;
             }
 
+            if (Dialogue[placement].Contains("Could he not just… replace it? Sounds rich enough."))
+            {
+                text3TMP.text = Name[Name2];
+                placement = 7; 
+                Debug.Log("Change Name"); 
+
+            }
+
             // Increment placement if not currently typing options
             if (!optionsDisplayed && placement < Dialogue.Length)
             {
                 placement++;
             }
         }
+
 
         void SetCharacterName()
         {
@@ -120,15 +132,15 @@ namespace Photorensic
             {
                 case 1:
                     Debug.Log("Option 1 selected");
-                    // Handle option 1
+                    placement++; 
                     break;
                 case 2:
                     Debug.Log("Option 2 selected");
-                    // Handle option 2
+                    placement++; 
                     break;
                 case 3:
                     Debug.Log("Option 3 selected");
-                    // Handle option 3
+                    placement++; 
                     break;
                 default:
                     break;
