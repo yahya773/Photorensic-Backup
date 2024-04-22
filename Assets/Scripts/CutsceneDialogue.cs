@@ -109,7 +109,6 @@ namespace Photorensic
             if (Dialogue[placement].Contains("Could he not just… replace it? Sounds rich enough."))
             {
                 text3TMP.text = Name[Name2];
-                textIndex = 7;
                 Debug.Log("Change Name"); 
 
             }
