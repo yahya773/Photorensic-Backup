@@ -109,9 +109,14 @@ namespace Photorensic
             if (Dialogue[placement].Contains("Could he not just… replace it? Sounds rich enough."))
             {
                 text3TMP.text = Name[Name2];
-                placement = 7; 
+                textIndex = 7;
                 Debug.Log("Change Name"); 
 
+            }
+
+            if (Dialogue[placement].Contains("Let’s get the lead out!"))
+            {
+                SceneManager.LoadScene(nextSceneName);
             }
 
             // Increment placement if not currently typing options
