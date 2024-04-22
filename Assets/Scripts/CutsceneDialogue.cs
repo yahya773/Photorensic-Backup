@@ -108,8 +108,12 @@ namespace Photorensic
 
             if (Dialogue[placement].Contains("Could he not just… replace it? Sounds rich enough."))
             {
-                text3TMP.text = Name[Name2];
-                Debug.Log("Change Name"); 
+                neutralSprite.SetActive(false);
+                happySprite.SetActive(false);
+                ExtraSprite.SetActive(false);
+                ExtraSpriteBlinking.SetActive(false);
+                surpriseSprite.SetActive(false);
+                optionsPanel.SetActive(false);
 
             }
 
@@ -129,6 +133,13 @@ namespace Photorensic
         void SetCharacterName()
         {
             text3TMP.text = Name[Name2];
+            if (Dialogue[placement].Contains("Could he not just"))
+            {
+                text3TMP.text = Name[Name2];
+                Name2 = 1;
+                Debug.Log("Change Name");
+
+            }
         }
         public void SelectOption(int option)
         {
