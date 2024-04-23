@@ -44,7 +44,6 @@ public class FPCharacterController : MonoBehaviour
         {
             walking.enabled = true;
         }
-
         else
         { walking.enabled = false; }
 
@@ -98,6 +97,7 @@ public class FPCharacterController : MonoBehaviour
             rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
             rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+            playerCamera2.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
     }
