@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using static UnityEditor.PlayerSettings;
 
 namespace Photorensic
 {
@@ -106,16 +107,53 @@ namespace Photorensic
                 optionsDisplayed = true;
             }
 
-            if (Dialogue[placement].Contains("Could he not just… replace it? Sounds rich enough."))
-            {
-                neutralSprite.SetActive(false);
-                happySprite.SetActive(false);
-                ExtraSprite.SetActive(false);
-                ExtraSpriteBlinking.SetActive(false);
-                surpriseSprite.SetActive(false);
-                optionsPanel.SetActive(false);
 
+            if (Dialogue[placement].Contains("Anyways, it would be a nice opportunity to put that fancy camera of yours to use!"))
+            {
+                happySprite.SetActive(true);
+                ExtraSpriteBlinking.SetActive(false);
+                neutralSprite.SetActive(false);
+                ExtraSprite.SetActive(false);
+                optionsPanel.SetActive(false);
             }
+
+            if (Dialogue[placement].Contains("What do you mean? "))
+            {
+                happySprite.SetActive(false);
+                ExtraSpriteBlinking.SetActive(false);
+                neutralSprite.SetActive(false);
+                ExtraSprite.SetActive(true);
+                surpriseSprite.SetActive(false);
+            }
+
+            if (Dialogue[placement].Contains("Oh!"))
+            {
+                happySprite.SetActive(false);
+                ExtraSpriteBlinking.SetActive(false);
+                neutralSprite.SetActive(false);
+                ExtraSprite.SetActive(false);
+                surpriseSprite.SetActive(true); 
+            }
+
+            if (Dialogue[placement].Contains("(unimpressed / questioning) Right… Like this place has even been open for longer than a year."))
+            {
+                happySprite.SetActive(true);
+                ExtraSpriteBlinking.SetActive(false);
+                neutralSprite.SetActive(false);
+                ExtraSprite.SetActive(false);
+                surpriseSprite.SetActive(false);
+            }
+
+            if (Dialogue[placement].Contains("I wonder why he hired us specifically… "))
+            {
+                happySprite.SetActive(false);
+                ExtraSpriteBlinking.SetActive(false);
+                neutralSprite.SetActive(false);
+                ExtraSprite.SetActive(false);
+                surpriseSprite.SetActive(true);
+            }
+
+
 
             if (Dialogue[placement].Contains("Let’s get the lead out!"))
             {
@@ -133,12 +171,48 @@ namespace Photorensic
         void SetCharacterName()
         {
             text3TMP.text = Name[Name2];
-            if (Dialogue[placement].Contains("Could he not just"))
+            if (Dialogue[placement].Contains("He’s sent for us to investigate a break-in where a vase, said to be a precious family heirloom, was stolen."))
             {
                 text3TMP.text = Name[Name2];
                 Name2 = 1;
                 Debug.Log("Change Name");
 
+            }
+
+            if (Dialogue[placement].Contains("Could he not just… replace it? Sounds rich enough."))
+            {
+                text3TMP.text = Name[Name2];
+                Name2 = 0;
+                Debug.Log("Change Name");
+
+            }
+
+            if (Dialogue[placement].Contains("What do you mean?"))
+            {
+                text3TMP.text = Name[Name2];
+                Name2 = 1;
+                Debug.Log("Change Name"); 
+            }
+
+            if (Dialogue[placement].Contains("You’re probably just that good."))
+            {
+                text3TMP.text = Name[Name2];
+                Name2 = 0;
+                Debug.Log("Change Name");
+            }
+
+            if (Dialogue[placement].Contains("I wonder why he hired us specifically… "))
+            {
+                text3TMP.text = Name[Name2];
+                Name2 = 1;
+                Debug.Log("Change Name");
+            }
+
+            if (Dialogue[placement].Contains("I doubt anyone referred to him. Maybe he sought us out. "))
+            {
+                text3TMP.text = Name[Name2];
+                Name2 = 0;
+                Debug.Log("Change Name");
             }
         }
         public void SelectOption(int option)
