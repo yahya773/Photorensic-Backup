@@ -11,15 +11,23 @@ public class Photography : MonoBehaviour
 
     [SerializeField] private Image photoDisplayArea;
     [SerializeField] private GameObject PhotoFrame;
+
+    [Header("Flash")] 
     [SerializeField] private GameObject cameraFlash;
     [SerializeField] private GameObject FlashUI;
     [SerializeField] private float flashTime;
     [SerializeField] private Animator flashAnimator;
     [SerializeField] private Animator FadingAnimation;
+
+    
     [SerializeField] private GameObject CameraUI;
     [SerializeField] private AudioSource cameraAudio;
     [SerializeField] private GameObject PhotoFrame2;
     [SerializeField] private VolumeProfile gameVolume;
+
+    [Header("Photography Switch")] 
+    [SerializeField] private GameObject gameView;
+    [SerializeField] private GameObject cameraView; 
 
     private bool AccessCamera = false;
 
@@ -30,6 +38,7 @@ public class Photography : MonoBehaviour
         CameraUI.SetActive(false);
         PhotoFrame.SetActive(false);
         PhotoFrame2.SetActive(false);
+        cameraView.SetActive(false);
     }
 
     private void Update()
@@ -39,11 +48,15 @@ public class Photography : MonoBehaviour
             if (AccessCamera)
             {
                 CameraUI.SetActive(false);
+              //  cameraView.SetActive(false);
+               // gameView.SetActive(true); 
                 AccessCamera = false;
             }
             else
             {
                 CameraUI.SetActive(true);
+             //   cameraView.SetActive(true);
+              //  gameView.SetActive(false); 
                 AccessCamera = true;
             }
         }
@@ -64,6 +77,8 @@ public class Photography : MonoBehaviour
     IEnumerator CapturePhoto()
     {
         CameraUI.SetActive(false);
+        gameView.SetActive(false);
+        cameraView.SetActive(true); 
         yield return new WaitForEndOfFrame();
         Rect regionToRead = new Rect(0, 0, Screen.width, Screen.height);
         screenCapture.ReadPixels(regionToRead, 0, 0, false);
@@ -90,6 +105,8 @@ public class Photography : MonoBehaviour
 
     IEnumerator CameraFlashEffect()
     {
+        gameView.SetActive(true);
+        cameraView.SetActive(false); 
         flashAnimator.Play("FlashAnimator");
         cameraFlash.SetActive(true);
         FlashUI.SetActive(true);

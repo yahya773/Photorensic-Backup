@@ -7,6 +7,7 @@ public class HeadBop : MonoBehaviour
     [SerializeField] private bool _enable = true;
     [SerializeField, Range(0, 0.1f)] private float _Amplitude = 0.015f; [SerializeField, Range(0, 30)] private float _frequency = 10.0f;
     [SerializeField] private Transform _camera = null; [SerializeField] private Transform _cameraHolder = null;
+    [SerializeField] private Transform _camera2 = null; [SerializeField] private Transform _cameraHolder2 = null;
 
     private float _toggleSpeed = 3.0f;
     private Vector3 _startPos;
@@ -16,6 +17,7 @@ public class HeadBop : MonoBehaviour
     {
         _controller = GetComponent<CharacterController>();
         _startPos = _camera.localPosition;
+ 
     }
 
     void Update()
@@ -24,6 +26,7 @@ public class HeadBop : MonoBehaviour
         CheckMotion();
         ResetPosition();
         _camera.LookAt(FocusTarget());
+        _camera2.LookAt(FocusTarget());
     }
     private Vector3 FootStepMotion()
     {
@@ -44,17 +47,21 @@ public class HeadBop : MonoBehaviour
     private void PlayMotion(Vector3 motion)
     {
         _camera.localPosition += motion;
+        _camera2.localPosition += motion;
     }
 
     private Vector3 FocusTarget()
     {
         Vector3 pos = new Vector3(transform.position.x, transform.position.y + _cameraHolder.localPosition.y, transform.position.z);
         pos += _cameraHolder.forward * 15.0f;
+        pos += _cameraHolder2.forward * 15.0f;
         return pos;
     }
     private void ResetPosition()
     {
         if (_camera.localPosition == _startPos) return;
+        if (_camera2.localPosition == _startPos) return;
         _camera.localPosition = Vector3.Lerp(_camera.localPosition, _startPos, 1 * Time.deltaTime);
+        _camera2.localPosition = Vector3.Lerp(_camera.localPosition, _startPos, 1 * Time.deltaTime);
     }
 }

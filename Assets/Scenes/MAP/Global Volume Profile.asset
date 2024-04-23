@@ -18,16 +18,16 @@ MonoBehaviour:
     m_Value: 0.41
   contrast:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: -5
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 0.9716981, g: 0.75119686, b: 0.3254272, a: 1}
+    m_Value: {r: 1, g: 0.7326472, b: 0.21226418, a: 1}
   hueShift:
     m_OverrideState: 1
     m_Value: 0
   saturation:
     m_OverrideState: 1
-    m_Value: -51
+    m_Value: -55
 --- !u!114 &-2208633039010955975
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -70,6 +70,8 @@ MonoBehaviour:
   - {fileID: -3286859636903894627}
   - {fileID: -2208633039010955975}
   - {fileID: 48867720124813040}
+  - {fileID: 2426757302196090518}
+  - {fileID: 5970203212151971269}
 --- !u!114 &48867720124813040
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -89,6 +91,80 @@ MonoBehaviour:
   tint:
     m_OverrideState: 1
     m_Value: 0
+--- !u!114 &2426757302196090518
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
+  m_Name: ShadowsMidtonesHighlights
+  m_EditorClassIdentifier: 
+  active: 1
+  shadows:
+    m_OverrideState: 1
+    m_Value: {x: 0.68345237, y: 1, z: 0.86734116, w: 0}
+  midtones:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 1, z: 1, w: 0}
+  highlights:
+    m_OverrideState: 1
+    m_Value: {x: 0.5022055, y: 1, z: 0, w: -0.8450704}
+  shadowsStart:
+    m_OverrideState: 1
+    m_Value: 0
+  shadowsEnd:
+    m_OverrideState: 1
+    m_Value: 0.3
+  highlightsStart:
+    m_OverrideState: 1
+    m_Value: 0.55
+  highlightsEnd:
+    m_OverrideState: 1
+    m_Value: 1
+--- !u!114 &5970203212151971269
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdfbdbb87d3286943a057f7791b43141, type: 3}
+  m_Name: ChannelMixer
+  m_EditorClassIdentifier: 
+  active: 1
+  redOutRedIn:
+    m_OverrideState: 1
+    m_Value: 77
+  redOutGreenIn:
+    m_OverrideState: 1
+    m_Value: -86
+  redOutBlueIn:
+    m_OverrideState: 1
+    m_Value: 200
+  greenOutRedIn:
+    m_OverrideState: 1
+    m_Value: 0
+  greenOutGreenIn:
+    m_OverrideState: 1
+    m_Value: 100
+  greenOutBlueIn:
+    m_OverrideState: 1
+    m_Value: 0
+  blueOutRedIn:
+    m_OverrideState: 1
+    m_Value: 0
+  blueOutGreenIn:
+    m_OverrideState: 1
+    m_Value: 0
+  blueOutBlueIn:
+    m_OverrideState: 1
+    m_Value: 100
 --- !u!114 &8655591508401037844
 MonoBehaviour:
   m_ObjectHideFlags: 3

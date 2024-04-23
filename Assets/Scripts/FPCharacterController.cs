@@ -8,6 +8,7 @@ using UnityEngine;
 public class FPCharacterController : MonoBehaviour
 {
     public Camera playerCamera;
+    public Camera playerCamera2; 
     public float walkSpeed = 6f;
     public float runSpeed = 12f;
     public float jumpPower = 7f;
