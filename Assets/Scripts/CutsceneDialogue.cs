@@ -59,6 +59,9 @@ namespace Photorensic
             option1Button.onClick.AddListener(() => SelectOption(1));
             option2Button.onClick.AddListener(() => SelectOption(2));
             option3Button.onClick.AddListener(() => SelectOption(3));
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true; 
         }
 
         void Update()
