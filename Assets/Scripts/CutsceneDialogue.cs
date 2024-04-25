@@ -13,11 +13,15 @@ namespace Photorensic
         public GameObject d_template;
         public GameObject canva;
 
+        public GameObject neutralSpriteFadeIn; 
         public GameObject neutralSprite;
         public GameObject happySprite;
         public GameObject ExtraSprite;
         public GameObject surpriseSprite;
-        public GameObject ExtraSpriteBlinking; 
+        public GameObject ExtraSpriteBlinking;
+
+        public GameObject pressE;
+        public GameObject template; 
 
         public float textSpeed = 0.05f; 
 
@@ -42,7 +46,10 @@ namespace Photorensic
 
         void Start()
         {
+            pressE.SetActive(true);
+            template.SetActive(false); 
             neutralSprite.SetActive(false);
+            neutralSpriteFadeIn.SetActive(false);
             happySprite.SetActive(false);
             ExtraSprite.SetActive(false);
             ExtraSpriteBlinking.SetActive(false); 
@@ -58,9 +65,12 @@ namespace Photorensic
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                pressE.SetActive(false);
+                template.SetActive(true); 
                 canva.SetActive(true);
                 SetCharacterName();
-                neutralSprite.SetActive(true);
+                // neutralSprite.SetActive(true);
+                // neutralSpriteFadeIn.SetActive(true);
                 StartCoroutine(TypeDialogue());
             }
         }
@@ -71,6 +81,7 @@ namespace Photorensic
             string displayedText = "";
             int textIndex = 0;
             text2TMP.text = displayedText;
+
            
 
 
@@ -86,7 +97,16 @@ namespace Photorensic
             {
                 ExtraSprite.SetActive(true);
                 neutralSprite.SetActive(false);
-                happySprite.SetActive(false); 
+                happySprite.SetActive(false);
+                neutralSpriteFadeIn.SetActive(false);
+            }
+
+            if (Dialogue[placement].Contains("Right, newbie!"))
+            {
+                ExtraSprite.SetActive(false);
+                neutralSprite.SetActive(false);
+                happySprite.SetActive(false);
+                neutralSpriteFadeIn.SetActive(true);
             }
 
             if (Dialogue[placement].Contains("It’s a man in his late 60s. Sir Guy Thorpe."))
@@ -104,6 +124,7 @@ namespace Photorensic
                 neutralSprite.SetActive(false);
                 ExtraSprite.SetActive(false); 
                 optionsPanel.SetActive(true);
+                neutralSpriteFadeIn.SetActive(false);
                 optionsDisplayed = true;
             }
 
@@ -112,6 +133,7 @@ namespace Photorensic
             {
                 happySprite.SetActive(true);
                 ExtraSpriteBlinking.SetActive(false);
+                neutralSpriteFadeIn.SetActive(false);
                 neutralSprite.SetActive(false);
                 ExtraSprite.SetActive(false);
                 optionsPanel.SetActive(false);
@@ -121,6 +143,7 @@ namespace Photorensic
             {
                 happySprite.SetActive(false);
                 ExtraSpriteBlinking.SetActive(false);
+                neutralSpriteFadeIn.SetActive(false);
                 neutralSprite.SetActive(false);
                 ExtraSprite.SetActive(true);
                 surpriseSprite.SetActive(false);
@@ -131,6 +154,7 @@ namespace Photorensic
                 happySprite.SetActive(false);
                 ExtraSpriteBlinking.SetActive(false);
                 neutralSprite.SetActive(false);
+                neutralSpriteFadeIn.SetActive(false);
                 ExtraSprite.SetActive(false);
                 surpriseSprite.SetActive(true); 
             }
@@ -139,6 +163,7 @@ namespace Photorensic
             {
                 happySprite.SetActive(true);
                 ExtraSpriteBlinking.SetActive(false);
+                neutralSpriteFadeIn.SetActive(false);
                 neutralSprite.SetActive(false);
                 ExtraSprite.SetActive(false);
                 surpriseSprite.SetActive(false);
@@ -148,6 +173,7 @@ namespace Photorensic
             {
                 happySprite.SetActive(false);
                 ExtraSpriteBlinking.SetActive(false);
+                neutralSpriteFadeIn.SetActive(false);
                 neutralSprite.SetActive(false);
                 ExtraSprite.SetActive(false);
                 surpriseSprite.SetActive(true);
@@ -174,6 +200,7 @@ namespace Photorensic
             if (Dialogue[placement].Contains("He’s sent for us to investigate a break-in where a vase, said to be a precious family heirloom, was stolen."))
             {
                 text3TMP.text = Name[Name2];
+                neutralSpriteFadeIn.SetActive(false);
                 Name2 = 1;
                 Debug.Log("Change Name");
 
@@ -182,6 +209,7 @@ namespace Photorensic
             if (Dialogue[placement].Contains("Could he not just… replace it? Sounds rich enough."))
             {
                 text3TMP.text = Name[Name2];
+                neutralSpriteFadeIn.SetActive(false);
                 Name2 = 0;
                 Debug.Log("Change Name");
 
@@ -191,12 +219,14 @@ namespace Photorensic
             {
                 text3TMP.text = Name[Name2];
                 Name2 = 1;
+                neutralSpriteFadeIn.SetActive(false);
                 Debug.Log("Change Name"); 
             }
 
             if (Dialogue[placement].Contains("You’re probably just that good."))
             {
                 text3TMP.text = Name[Name2];
+                neutralSpriteFadeIn.SetActive(false);
                 Name2 = 0;
                 Debug.Log("Change Name");
             }
@@ -204,6 +234,7 @@ namespace Photorensic
             if (Dialogue[placement].Contains("I wonder why he hired us specifically… "))
             {
                 text3TMP.text = Name[Name2];
+                neutralSpriteFadeIn.SetActive(false);
                 Name2 = 1;
                 Debug.Log("Change Name");
             }
@@ -211,6 +242,7 @@ namespace Photorensic
             if (Dialogue[placement].Contains("I doubt anyone referred to him. Maybe he sought us out. "))
             {
                 text3TMP.text = Name[Name2];
+                neutralSpriteFadeIn.SetActive(false);
                 Name2 = 0;
                 Debug.Log("Change Name");
             }
