@@ -598,7 +598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc479d5e8b6e8364980985a6381a1bac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Cutscene Intro
+  nextSceneName: Detective
   timeRemaining: 5
   timer2: {fileID: 1958760047}
 --- !u!224 &1627103958
