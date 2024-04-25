@@ -260,7 +260,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Press E to Interact '
+  m_text: Press E to talk
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cfef23aba05007e46a09fc8b4f9ace57, type: 2}
   m_sharedMaterial: {fileID: -7031224936046873923, guid: cfef23aba05007e46a09fc8b4f9ace57, type: 2}
@@ -28660,8 +28660,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 1.46, z: 1.35}
-  m_Center: {x: 0.00000015646218, y: 0.00000006519258, z: 0.00000005960464}
+  m_Size: {x: 3.4093256, y: 2.212493, z: 1.35}
+  m_Center: {x: -0.7046623, y: 0.37624612, z: 0.0000000563984}
 --- !u!114 &7657645330232787119
 MonoBehaviour:
   m_ObjectHideFlags: 0
