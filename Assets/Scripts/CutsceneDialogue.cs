@@ -75,6 +75,7 @@ namespace Photorensic
                 // neutralSprite.SetActive(true);
                 // neutralSpriteFadeIn.SetActive(true);
                 StartCoroutine(TypeDialogue());
+
             }
         }
 
