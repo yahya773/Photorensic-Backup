@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class NPCInteractDialogue : MonoBehaviour
 {
     public GameObject d_template;
-    public GameObject canva;
 
     [Header("Sprites")] 
     public GameObject neutralSpriteFadeIn;
@@ -41,6 +40,9 @@ public class NPCInteractDialogue : MonoBehaviour
     public Button option2Button;
     public Button option3Button;
 
+    [Header("Movement")] 
+ 
+
     private bool optionsDisplayed;
 
     public bool player_detection; 
@@ -50,7 +52,7 @@ public class NPCInteractDialogue : MonoBehaviour
         pressE.SetActive(true);
         template.SetActive(false);
         neutralSprite.SetActive(false);
-        neutralSpriteFadeIn.SetActive(false);
+        neutralSpriteFadeIn.SetActive(true);
         happySprite.SetActive(false);
         ExtraSprite.SetActive(false);
         ExtraSpriteBlinking.SetActive(false);
@@ -70,9 +72,10 @@ public class NPCInteractDialogue : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && player_detection)
         {
+            Cursor.visible = true;
             pressE.SetActive(false);
             template.SetActive(true);
-            canva.SetActive(true);
+           
             SetCharacterName();
             // neutralSprite.SetActive(true);
             // neutralSpriteFadeIn.SetActive(true);
@@ -86,7 +89,8 @@ public class NPCInteractDialogue : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             player_detection = true;
-            pressE.SetActive(true); 
+            pressE.SetActive(true);
+            Debug.Log("Collider");
         }
     }
 
@@ -95,7 +99,8 @@ public class NPCInteractDialogue : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             player_detection = false;
-            pressE.SetActive(false); 
+            pressE.SetActive(false);
+            Debug.Log("Exit Collider"); 
         }
     }
 
@@ -136,6 +141,7 @@ public class NPCInteractDialogue : MonoBehaviour
             optionsPanel.SetActive(true);
             neutralSpriteFadeIn.SetActive(false);
             optionsDisplayed = true;
+            Cursor.visible = true;
         }
 
 
@@ -149,7 +155,7 @@ public class NPCInteractDialogue : MonoBehaviour
             optionsPanel.SetActive(false);
         }
 
- 
+
 
         // Increment placement if not currently typing options
         if (!optionsDisplayed && placement < Dialogue.Length)
