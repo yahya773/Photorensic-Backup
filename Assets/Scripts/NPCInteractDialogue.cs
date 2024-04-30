@@ -1,15 +1,14 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class NPCInteractDialogue : MonoBehaviour
 {
     public GameObject d_template;
 
-    [Header("Sprites")] 
+    [Header("Sprites")]
     public GameObject neutralSpriteFadeIn;
     public GameObject neutralSprite;
     public GameObject happySprite;
@@ -20,10 +19,10 @@ public class NPCInteractDialogue : MonoBehaviour
     public GameObject pressE;
     public GameObject template;
 
-    [Header("Text Speed")] 
+    [Header("Text Speed")]
     public float textSpeed = 0.05f;
 
-    [Header("Dialoge")] 
+    [Header("Dialog")]
     public string[] Dialogue;
     public int placement;
 
@@ -40,12 +39,9 @@ public class NPCInteractDialogue : MonoBehaviour
     public Button option2Button;
     public Button option3Button;
 
-    [Header("Movement")] 
- 
-
+    public FPCharacterController fpCharacterController; // Reference to the FPCharacterController script
     private bool optionsDisplayed;
-
-    public bool player_detection; 
+    public bool player_detection;
 
     void Start()
     {
@@ -58,7 +54,7 @@ public class NPCInteractDialogue : MonoBehaviour
         ExtraSpriteBlinking.SetActive(false);
         surpriseSprite.SetActive(false);
         optionsPanel.SetActive(false);
-        player_detection = false; 
+        player_detection = false;
 
         option1Button.onClick.AddListener(() => SelectOption(1));
         option2Button.onClick.AddListener(() => SelectOption(2));
@@ -72,15 +68,21 @@ public class NPCInteractDialogue : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && player_detection)
         {
+            // Enable cursor and show dialogue UI
+            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             pressE.SetActive(false);
             template.SetActive(true);
-           
             SetCharacterName();
-            // neutralSprite.SetActive(true);
-            // neutralSpriteFadeIn.SetActive(true);
             StartCoroutine(TypeDialogue());
             Debug.Log("Collider Guy Thorpe");
+
+            // Disable player movement and rotation while dialogue is active
+            if (fpCharacterController != null)
+            {
+                fpCharacterController.SetMovementEnabled(false);
+                fpCharacterController.SetRotationEnabled(false);
+            }
         }
     }
 
@@ -100,7 +102,7 @@ public class NPCInteractDialogue : MonoBehaviour
         {
             player_detection = false;
             pressE.SetActive(false);
-            Debug.Log("Exit Collider"); 
+            Debug.Log("Exit Collider");
         }
     }
 
@@ -110,9 +112,6 @@ public class NPCInteractDialogue : MonoBehaviour
         string displayedText = "";
         int textIndex = 0;
         text2TMP.text = displayedText;
-
-
-
 
         while (textIndex < currentText.Length)
         {
@@ -130,7 +129,6 @@ public class NPCInteractDialogue : MonoBehaviour
             neutralSpriteFadeIn.SetActive(false);
         }
 
-
         // Typing finished, check for options to be displayed
         if (Dialogue[placement].Contains("I'm grumpy."))
         {
@@ -144,7 +142,6 @@ public class NPCInteractDialogue : MonoBehaviour
             Cursor.visible = true;
         }
 
-
         if (Dialogue[placement].Contains("Anyways, it would be a nice opportunity to put that fancy camera of yours to use!"))
         {
             happySprite.SetActive(true);
@@ -155,7 +152,14 @@ public class NPCInteractDialogue : MonoBehaviour
             optionsPanel.SetActive(false);
         }
 
-
+        if (Dialogue[placement].Contains("Exit Now"))
+        {
+            fpCharacterController.SetMovementEnabled(true);
+            fpCharacterController.SetRotationEnabled(true);
+            template.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
 
         // Increment placement if not currently typing options
         if (!optionsDisplayed && placement < Dialogue.Length)
@@ -164,21 +168,18 @@ public class NPCInteractDialogue : MonoBehaviour
         }
     }
 
-
     void SetCharacterName()
     {
         text3TMP.text = Name[Name2];
-        if (Dialogue[placement].Contains("He’s sent for us to investigate a break-in where a vase, said to be a precious family heirloom, was stolen."))
+        if (Dialogue[placement].Contains("Heï¿½s sent for us to investigate a break-in where a vase, said to be a precious family heirloom, was stolen."))
         {
             text3TMP.text = Name[Name2];
             neutralSpriteFadeIn.SetActive(false);
             Name2 = 1;
             Debug.Log("Change Name");
-
         }
-
-     
     }
+
     public void SelectOption(int option)
     {
         switch (option)
@@ -202,8 +203,5 @@ public class NPCInteractDialogue : MonoBehaviour
         // Hide options panel after selecting an option
         optionsPanel.SetActive(false);
         optionsDisplayed = false;
-
     }
-
 }
-

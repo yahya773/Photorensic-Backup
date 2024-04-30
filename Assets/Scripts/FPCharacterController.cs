@@ -1,14 +1,12 @@
-
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class FPCharacterController : MonoBehaviour
 {
     public Camera playerCamera;
-    public Camera playerCamera2; 
+    public Camera playerCamera2;
     public float walkSpeed = 6f;
     public float runSpeed = 12f;
     public float jumpPower = 7f;
@@ -26,16 +24,16 @@ public class FPCharacterController : MonoBehaviour
     public AudioSource walking;
     public AudioClip walkingClip;
 
-    public GameObject Polaroid; 
+    public GameObject Polaroid;
 
     private bool canMove = true;
+    private bool canRotate = true;
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-       // Polaroid = false; 
     }
 
     void Update()
@@ -49,7 +47,7 @@ public class FPCharacterController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-          //  Polaroid = true; 
+            //  Polaroid = true; 
         }
 
 
@@ -101,5 +99,15 @@ public class FPCharacterController : MonoBehaviour
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
 
+    }
+
+    public void SetMovementEnabled(bool isEnabled)
+    {
+        canMove = isEnabled;
+    }
+
+    public void SetRotationEnabled(bool isEnabled)
+    {
+        canRotate = isEnabled;
     }
 }
