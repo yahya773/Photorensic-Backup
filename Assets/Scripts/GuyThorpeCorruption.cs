@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class GuyThorpeCorruption : MonoBehaviour
 {
@@ -10,12 +13,18 @@ public class GuyThorpeCorruption : MonoBehaviour
 
    
     private bool playerInsideTrigger;
+    private bool InObject;
+
+    public FPCharacterController fpCharacterController;
 
     // Start is called before the first frame update
     void Start()
     {
         UIObject.SetActive(false);
         InteractE.SetActive(false);
+        InObject = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,6 +33,7 @@ public class GuyThorpeCorruption : MonoBehaviour
         {
             InteractE.SetActive(true);
             playerInsideTrigger = true;
+            Debug.Log("Collider"); 
         }
     }
 
@@ -34,15 +44,26 @@ public class GuyThorpeCorruption : MonoBehaviour
             UIObject.SetActive(false);
             InteractE.SetActive(false);
             playerInsideTrigger = false;
+            Debug.Log("Exit Collider"); 
         }
     }
 
     void Update()
     {
-       
+
         if (playerInsideTrigger && Input.GetKeyDown(KeyCode.E))
         {
             UIObject.SetActive(true);
+            Debug.Log("E is Pressed");
+            InObject = true;
+            if (fpCharacterController != null)
+            {
+                fpCharacterController.SetMovementEnabled(false);
+                fpCharacterController.SetRotationEnabled(false);
+            }
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
+       
     }
 }
