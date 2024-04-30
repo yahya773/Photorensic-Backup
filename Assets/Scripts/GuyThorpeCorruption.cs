@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class GuyThorpeCorruption : MonoBehaviour
 {
@@ -16,10 +17,12 @@ public class GuyThorpeCorruption : MonoBehaviour
     private bool InObject;
 
     public FPCharacterController fpCharacterController;
+    public Button Exit; 
 
     // Start is called before the first frame update
     void Start()
     {
+        Exit.onClick.AddListener(() => SelectOption(1));
         UIObject.SetActive(false);
         InteractE.SetActive(false);
         InObject = false;
