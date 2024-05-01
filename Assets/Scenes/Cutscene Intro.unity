@@ -389,12 +389,14 @@ MonoBehaviour:
   - 'Right, newbie! '
   - Excited for your first proper case?
   - "You\u2019ll do great, don\u2019t worry. "
-  - "So\u2026"
+  - "So\u2026 (open up file) "
   - "It\u2019s a man in his late 60s. Sir Guy Thorpe."
   - "He\u2019s sent for us to investigate a break-in where a vase, said to be a precious
     family heirloom, was stolen."
+  - Huh...
   - "Could he not just\u2026 replace it? Sounds rich enough."
   - "I wonder why he hired us specifically\u2026 "
+  - Who referred him to us?
   - 'I doubt anyone referred to him. Maybe he sought us out. '
   - 'Oh! '
   - 'What do you mean? '
@@ -403,6 +405,7 @@ MonoBehaviour:
     longer than a year. "
   - "We couldn\u2019t have developed a rep that quickly. "
   - '(Sigh) '
+  - "Let\u2019s just\u2026 strike while the iron\u2019s hot!"
   - 'Anyways, it would be a nice opportunity to put that fancy camera of yours to
     use! '
   - 'Right then. '
