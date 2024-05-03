@@ -41,8 +41,12 @@ namespace Photorensic
         public Button option1Button;
         public Button option2Button;
         public Button option3Button;
-
         private bool optionsDisplayed;
+
+        [Header("Skip")]
+        public GameObject MiscellionousPanel; 
+        public Button skip;
+        public Button Reverse; 
 
         void Start()
         {
@@ -55,11 +59,17 @@ namespace Photorensic
             ExtraSpriteBlinking.SetActive(false); 
             surpriseSprite.SetActive(false);
             optionsPanel.SetActive(false);
+            MiscellionousPanel.SetActive(false); 
+
+
 
             option1Button.onClick.AddListener(() => SelectOption(1));
             option2Button.onClick.AddListener(() => SelectOption(2));
             option3Button.onClick.AddListener(() => SelectOption(3));
 
+            skip.onClick.AddListener(() => Skip(1));
+            Reverse.onClick.AddListener(() => Skip(2)); 
+            
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true; 
         }
@@ -68,6 +78,7 @@ namespace Photorensic
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                MiscellionousPanel.SetActive(true);
                 pressE.SetActive(false);
                 template.SetActive(true); 
                 canva.SetActive(true);
@@ -275,6 +286,29 @@ namespace Photorensic
             optionsPanel.SetActive(false);
             optionsDisplayed = false;
 
+        }
+
+        public void Skip(int skip)
+        {
+            switch(skip)
+            {
+                case 1:
+                    Debug.Log("Go Back");
+                    placement -= 2; 
+                    if (placement < 0)
+                    {
+                        placement = 0; 
+                    }
+                    break;
+                case 2:
+                    Debug.Log("Skip Dialogue");
+                    placement = 20; 
+                    break;
+                default:
+                    break; 
+               
+
+            }
         }
 
     }

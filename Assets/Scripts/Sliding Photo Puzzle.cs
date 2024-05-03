@@ -52,7 +52,7 @@ public class SlidingPhotoPuzzle : MonoBehaviour
     {
         size = 3;
         pieces = new GameObject[size * size];
-        CreateGamePieces(0.01f);
+        CreateGamePieces(0.1f);
     }
 
     void Update()
