@@ -1,83 +1,93 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UI; 
 
-public class SlidingPuzzle : MonoBehaviour
+public class SlidingPhotoPuzzle : MonoBehaviour
 {
-    [SerializeField] private GridLayoutGroup gridLayoutGroup;
-    [SerializeField] private GameObject buttonPrefab;
-    [SerializeField] private Sprite[] puzzleSprites; // Array of puzzle sprites in order
+    [SerializeField] private Transform gameTransform;
+    [SerializeField] private GameObject piecePrefab;
+    [SerializeField] private Sprite puzzleSprite;
 
-    private GameObject[] buttons;
-    private int size = 3; // Change this to adjust puzzle size
-    private int emptyIndex;
+    private GameObject[] pieces;
+    private int emptyLocation;
+    private int size;
+
+    private void CreateGamePieces(float gapThickness)
+    {
+        float width = 1f / size;
+        for (int row = 0; row < size; row++)
+        {
+            for (int col = 0; col < size; col++)
+            {
+                GameObject piece = Instantiate(piecePrefab, gameTransform);
+
+                piece.transform.localPosition = new Vector3(
+                    -1f + (2f * width * col) + width,
+                    1f - (2f * width * row) - width,
+                    0f
+                );
+
+                piece.transform.localScale = ((2f * width) - gapThickness) * Vector3.one;
+                piece.name = $"{(row * size) + col}";
+
+                if ((row == size - 1) && (col == size - 1))
+                {
+                    emptyLocation = (size * size) - 1;
+                    piece.SetActive(false);
+                }
+                else
+                {
+                    SpriteRenderer spriteRenderer = piece.GetComponent<SpriteRenderer>();
+                    spriteRenderer.sprite = puzzleSprite;
+
+                    BoxCollider2D boxCollider = piece.AddComponent<BoxCollider2D>();
+                    boxCollider.size = new Vector2(width, width);
+                }
+
+                pieces[row * size + col] = piece;
+            }
+        }
+    }
 
     void Start()
     {
-        CreatePuzzle();
+        size = 3;
+        pieces = new GameObject[size * size];
+        CreateGamePieces(0.1f);
     }
 
-    void CreatePuzzle()
+    void Update()
     {
-        int puzzleLength = size * size;
-
-        // Create buttons array
-        buttons = new GameObject[puzzleLength];
-
-        // Calculate button size
-        float buttonWidth = gridLayoutGroup.cellSize.x;
-        float buttonHeight = gridLayoutGroup.cellSize.y;
-
-        // Instantiate buttons and set sprite
-        for (int i = 0; i < puzzleLength; i++)
+        if (Input.GetMouseButton(0))
         {
-            GameObject button = Instantiate(buttonPrefab, gridLayoutGroup.transform);
-            int index = i; // Capture the index value
-            button.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(index)); // Add click listener
-
-            // Set sprite
-            Image image = button.GetComponent<Image>();
-            int spriteIndex = (i == puzzleLength - 1) ? puzzleLength - 1 : i % puzzleSprites.Length;
-            image.sprite = puzzleSprites[spriteIndex];
-
-            // Set button name and position
-            button.name = i.ToString();
-            buttons[i] = button;
-
-            // Set empty index
-            if (i == puzzleLength - 1)
-                emptyIndex = i;
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit))
+            {
+                for (int i = 0; i < pieces.Length; i++)
+                {
+                    if (pieces[i] == hit.transform.gameObject)
+                    {
+                        if (SwapIfValid(i, -size)) break;
+                        if (SwapIfValid(i, size)) break;
+                        if (SwapIfValid(i, -1)) break;
+                        if (SwapIfValid(i, 1)) break;
+                    }
+                }
+            }
         }
     }
 
-    void OnButtonClick(int index)
+    private bool SwapIfValid(int i, int offset)
     {
-        if (IsAdjacent(index, emptyIndex))
+        if (((i + offset) >= 0) && ((i + offset) < pieces.Length) && (Mathf.Abs((i + offset) % size - i % size) <= 1))
         {
-            SwapButtons(index, emptyIndex);
-            emptyIndex = index;
+            if (i + offset == emptyLocation)
+            {
+                (pieces[i], pieces[i + offset]) = (pieces[i + offset], pieces[i]);
+                emptyLocation = i;
+                return true;
+            }
         }
-    }
-
-    bool IsAdjacent(int index1, int index2)
-    {
-        int row1 = index1 / size;
-        int col1 = index1 % size;
-        int row2 = index2 / size;
-        int col2 = index2 % size;
-
-        return (Mathf.Abs(row1 - row2) + Mathf.Abs(col1 - col2) == 1);
-    }
-
-    void SwapButtons(int index1, int index2)
-    {
-        // Swap button positions
-        Vector3 tempPosition = buttons[index1].transform.localPosition;
-        buttons[index1].transform.localPosition = buttons[index2].transform.localPosition;
-        buttons[index2].transform.localPosition = tempPosition;
-
-        // Swap buttons in the array
-        GameObject tempButton = buttons[index1];
-        buttons[index1] = buttons[index2];
-        buttons[index2] = tempButton;
+        return false;
     }
 }

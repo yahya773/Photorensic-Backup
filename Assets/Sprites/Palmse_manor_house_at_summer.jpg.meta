@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -134,216 +134,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Palmse_manor_house_at_summer_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 534
-        width: 400
-        height: 267
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a0b368f3c2c1cac4a8f295aae58f844f
-      internalID: 774569714
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Palmse_manor_house_at_summer_1
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 534
-        width: 400
-        height: 267
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8ff23919453c26543883280704162364
-      internalID: -901509997
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Palmse_manor_house_at_summer_2
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 534
-        width: 400
-        height: 267
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 35052add3039ce440a1336e1ccc198a5
-      internalID: 114004856
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Palmse_manor_house_at_summer_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 267
-        width: 400
-        height: 267
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c1193796587c4184bb1bf489b7cfb31b
-      internalID: 2003752557
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Palmse_manor_house_at_summer_4
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 267
-        width: 400
-        height: 267
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 90922db0335e88f468cf25b631c3c7e4
-      internalID: 758571259
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Palmse_manor_house_at_summer_5
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 267
-        width: 400
-        height: 267
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1885cd3257259764abe870e1139161fa
-      internalID: 2049115147
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Palmse_manor_house_at_summer_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 400
-        height: 267
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0d2010fb24fc9724f9e22c4c52d40410
-      internalID: -411078380
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Palmse_manor_house_at_summer_7
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 0
-        width: 400
-        height: 267
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4810032430a0bb94c89a6741f1b4ad96
-      internalID: -584751612
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Palmse_manor_house_at_summer_8
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 0
-        width: 400
-        height: 267
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 151b75f60aa6d5747b4a55dda658f6d9
-      internalID: 786320444
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Palmse_manor_house_at_summer_0: 774569714
-      Palmse_manor_house_at_summer_1: -901509997
-      Palmse_manor_house_at_summer_2: 114004856
-      Palmse_manor_house_at_summer_3: 2003752557
-      Palmse_manor_house_at_summer_4: 758571259
-      Palmse_manor_house_at_summer_5: 2049115147
-      Palmse_manor_house_at_summer_6: -411078380
-      Palmse_manor_house_at_summer_7: -584751612
-      Palmse_manor_house_at_summer_8: 786320444
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
