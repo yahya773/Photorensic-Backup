@@ -8,13 +8,22 @@ public class NPCInteractDialogue : MonoBehaviour
 {
     public GameObject d_template;
 
-    [Header("Sprites")]
+    [Header("Guy Thorpe Sprites")]
     public GameObject neutralSpriteFadeIn;
     public GameObject neutralSprite;
     public GameObject happySprite;
     public GameObject ExtraSprite;
     public GameObject surpriseSprite;
     public GameObject ExtraSpriteBlinking;
+
+    [Header("Dolores Sprites")]
+    public GameObject neutralDoloresSpriteFadeIn;
+    public GameObject neutralDoloresSprite;
+    public GameObject happyDoloresSprite;
+    public GameObject surpriseDoloresSprite; 
+    public GameObject extraDoloresSprite;
+    public GameObject extraDoloresSpriteBlinking; 
+
 
     public GameObject pressE;
     public GameObject template;
@@ -53,6 +62,13 @@ public class NPCInteractDialogue : MonoBehaviour
         ExtraSprite.SetActive(false);
         ExtraSpriteBlinking.SetActive(false);
         surpriseSprite.SetActive(false);
+        neutralDoloresSpriteFadeIn.SetActive(false);
+        neutralDoloresSprite.SetActive(false);
+        happyDoloresSprite.SetActive(false);
+        surpriseDoloresSprite.SetActive(false);
+        extraDoloresSprite.SetActive(false);
+        extraDoloresSpriteBlinking.SetActive(false);
+
         optionsPanel.SetActive(false);
         player_detection = false;
 
@@ -175,6 +191,14 @@ public class NPCInteractDialogue : MonoBehaviour
         {
             text3TMP.text = Name[Name2];
             neutralSpriteFadeIn.SetActive(false);
+            Name2 = 0;
+            Debug.Log("Change Name");
+        }
+
+        if (Dialogue[placement].Contains("(smiling) You have finally arrived! I have been waiting for you."))
+        {
+            text3TMP.text = Name[Name2];
+            neutralSpriteFadeIn.SetActive(true);
             Name2 = 1;
             Debug.Log("Change Name");
         }
