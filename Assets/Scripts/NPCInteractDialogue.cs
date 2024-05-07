@@ -177,6 +177,18 @@ public class NPCInteractDialogue : MonoBehaviour
             Cursor.visible = false;
         }
 
+        if (Dialogue[placement].Contains("This is my apprentice, Jaxson."))
+        {
+            happySprite.SetActive(true);
+            ExtraSpriteBlinking.SetActive(false);
+            neutralSprite.SetActive(false);
+            ExtraSprite.SetActive(false);
+            optionsPanel.SetActive(true);
+            neutralSpriteFadeIn.SetActive(false);
+            optionsDisplayed = true;
+            Cursor.visible = true;
+        }
+
         // Increment placement if not currently typing options
         if (!optionsDisplayed && placement < Dialogue.Length)
         {
