@@ -168,7 +168,19 @@ public class NPCInteractDialogue : MonoBehaviour
             optionsPanel.SetActive(false);
         }
 
-        if (Dialogue[placement].Contains("Exit Now"))
+        if (Dialogue[placement].Contains("(smiling) You have finally arrived! I have been waiting for you."))
+        {
+            happySprite.SetActive(false);
+            ExtraSpriteBlinking.SetActive(false);
+            neutralSpriteFadeIn.SetActive(false);
+            neutralDoloresSprite.SetActive(true);
+            neutralSpriteFadeIn.SetActive(false);
+            neutralSprite.SetActive(false);
+            ExtraSprite.SetActive(false);
+            optionsPanel.SetActive(false);
+        }
+
+        if (Dialogue[placement].Contains("Please lead the way."))
         {
             fpCharacterController.SetMovementEnabled(true);
             fpCharacterController.SetRotationEnabled(true);
@@ -179,11 +191,8 @@ public class NPCInteractDialogue : MonoBehaviour
 
         if (Dialogue[placement].Contains("This is my apprentice, Jaxson."))
         {
-            happySprite.SetActive(true);
-            ExtraSpriteBlinking.SetActive(false);
-            neutralSprite.SetActive(false);
-            ExtraSprite.SetActive(false);
             optionsPanel.SetActive(true);
+            neutralDoloresSprite.SetActive(true);
             neutralSpriteFadeIn.SetActive(false);
             optionsDisplayed = true;
             Cursor.visible = true;
@@ -212,6 +221,14 @@ public class NPCInteractDialogue : MonoBehaviour
             text3TMP.text = Name[Name2];
             neutralSpriteFadeIn.SetActive(true);
             Name2 = 1;
+            Debug.Log("Change Name");
+        }
+
+        if (Dialogue[placement].Contains("This is my apprentice, Jaxson."))
+        {
+            text3TMP.text = Name[Name2];
+            neutralSpriteFadeIn.SetActive(true);
+            Name2 = 0;
             Debug.Log("Change Name");
         }
     }
