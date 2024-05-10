@@ -22,7 +22,7 @@ public class GuyThorpeCorruption : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      //  Exit.onClick.AddListener(() => SelectOption(1));
+        Exit.onClick.AddListener(() => ExitButton(1));
         UIObject.SetActive(false);
         InteractE.SetActive(false);
         InObject = false;
@@ -68,5 +68,26 @@ public class GuyThorpeCorruption : MonoBehaviour
             Cursor.visible = true;
         }
        
+    }
+
+    public void ExitButton(int Button)
+    {
+        switch (Button)
+        {
+            case 1:
+                UIObject.SetActive(false); 
+                if (fpCharacterController != null)
+                {
+                    fpCharacterController.SetMovementEnabled(true);
+                    fpCharacterController.SetRotationEnabled(true);
+                }
+
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false; 
+                break;
+
+            default:
+                break; 
+        }
     }
 }
