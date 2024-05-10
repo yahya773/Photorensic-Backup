@@ -137,12 +137,19 @@ public class NPCInteractDialogue : MonoBehaviour
             yield return new WaitForSeconds(textSpeed);
         }
 
-        if (Dialogue[placement].Contains("Hello!"))
+        if (Dialogue[placement].Contains("START DIALOGUE"))
         {
             ExtraSprite.SetActive(true);
             neutralSprite.SetActive(false);
             happySprite.SetActive(false);
             neutralSpriteFadeIn.SetActive(false);
+            neutralSpriteFadeIn.SetActive(false);
+            neutralDoloresSpriteFadeIn.SetActive(false);
+            neutralDoloresSprite.SetActive(false);
+            happyDoloresSprite.SetActive(false);
+            surpriseDoloresSprite.SetActive(false);
+            extraDoloresSprite.SetActive(false);
+            extraDoloresSpriteBlinking.SetActive(false);
         }
 
         // Typing finished, check for options to be displayed
@@ -172,8 +179,8 @@ public class NPCInteractDialogue : MonoBehaviour
         {
             happySprite.SetActive(false);
             ExtraSpriteBlinking.SetActive(false);
-            neutralSpriteFadeIn.SetActive(false);
-            neutralDoloresSprite.SetActive(true);
+            neutralSpriteFadeIn.SetActive(true);
+            neutralDoloresSprite.SetActive(false);
             neutralSpriteFadeIn.SetActive(false);
             neutralSprite.SetActive(false);
             ExtraSprite.SetActive(false);
@@ -189,12 +196,28 @@ public class NPCInteractDialogue : MonoBehaviour
             Cursor.visible = false;
         }
 
+        if (Dialogue[placement].Contains("*GO TO THE LIVING ROOM*"))
+        {
+            fpCharacterController.SetMovementEnabled(true);
+            fpCharacterController.SetRotationEnabled(true);
+            template.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
         if (Dialogue[placement].Contains("This is my apprentice, Jaxson."))
         {
             optionsPanel.SetActive(true);
             neutralDoloresSprite.SetActive(true);
             neutralSpriteFadeIn.SetActive(false);
             optionsDisplayed = true;
+            Cursor.visible = true;
+        }
+
+        if (Dialogue[placement].Contains(" (surprised) It is my first time inside a mansion this big."))
+        {
+            neutralSpriteFadeIn.SetActive(false);
+            neutralDoloresSpriteFadeIn.SetActive(true);
             Cursor.visible = true;
         }
 
@@ -229,6 +252,14 @@ public class NPCInteractDialogue : MonoBehaviour
             text3TMP.text = Name[Name2];
             neutralSpriteFadeIn.SetActive(true);
             Name2 = 0;
+            Debug.Log("Change Name");
+        }
+
+        if (Dialogue[placement].Contains(" (surprised) It is my first time inside a mansion this big."))
+        {
+            text3TMP.text = Name[Name2];
+            neutralSpriteFadeIn.SetActive(true);
+            Name2 = 1;
             Debug.Log("Change Name");
         }
     }
