@@ -3,27 +3,27 @@ using UnityEngine.UI;
 
 public class SlidingPuzzle : MonoBehaviour
 {
-    public Texture2D puzzleImage; // The image to be used for the puzzle
-    public int puzzleSize = 3; // Size of the puzzle (3x3 by default)
-    public GameObject buttonPrefab; // Prefab for the puzzle piece buttons
-    public Vector2 buttonSize = new Vector2(100f, 100f); // Size of each puzzle piece button
+    public Texture2D puzzleImage;
+    public int puzzleSize = 3; 
+    public GameObject buttonPrefab; 
+    public Vector2 buttonSize = new Vector2(100f, 100f); 
 
-    private Texture2D[] puzzlePieces; // Array to hold individual puzzle pieces
-    private int emptyIndex; // Index of the empty puzzle piece
+    private Texture2D[] puzzlePieces;
+    private int emptyIndex; 
 
     void Start()
     {
-        // Split the puzzle image into pieces
+        
         puzzlePieces = SplitImage(puzzleImage, puzzleSize);
 
-        // Shuffle puzzle pieces
+        
         ShufflePieces();
 
-        // Create puzzle pieces buttons
+       
         CreateButtons();
     }
 
-    // Function to split the puzzle image into pieces
+
     private Texture2D[] SplitImage(Texture2D image, int size)
     {
         int pieceWidth = image.width / size;
@@ -38,6 +38,7 @@ public class SlidingPuzzle : MonoBehaviour
                 piece.SetPixels(image.GetPixels(j * pieceWidth, (size - 1 - i) * pieceHeight, pieceWidth, pieceHeight));
                 piece.Apply();
                 pieces[i * size + j] = piece;
+                Debug.Log("piece"); 
             }
         }
 
@@ -85,25 +86,25 @@ public class SlidingPuzzle : MonoBehaviour
         }
     }
 
-    // Function to move puzzle piece
+  
     private void MovePiece(int index)
     {
         if (IsAdjacent(index, emptyIndex))
         {
-            // Swap pieces
+
             Texture2D temp = puzzlePieces[index];
             puzzlePieces[index] = null;
             puzzlePieces[emptyIndex] = temp;
 
-            // Update empty index
+     
             emptyIndex = index;
 
-            // Update button images
+
             RefreshButtons();
         }
     }
 
-    // Function to check if two pieces are adjacent
+
     private bool IsAdjacent(int index1, int index2)
     {
         int row1 = index1 / puzzleSize;
@@ -114,7 +115,7 @@ public class SlidingPuzzle : MonoBehaviour
         return Mathf.Abs(row1 - row2) + Mathf.Abs(col1 - col2) == 1;
     }
 
-    // Function to refresh button images
+
     private void RefreshButtons()
     {
         for (int i = 0; i < puzzlePieces.Length; i++)
