@@ -48,6 +48,10 @@ public class NPCInteractDialogue : MonoBehaviour
     public Button option2Button;
     public Button option3Button;
 
+    [Header("Placement")]
+    public GameObject[] spriteOption;
+    public int spritePlacement; 
+
     public FPCharacterController fpCharacterController; // Reference to the FPCharacterController script
     private bool optionsDisplayed;
     public bool player_detection;
@@ -93,6 +97,8 @@ public class NPCInteractDialogue : MonoBehaviour
             StartCoroutine(TypeDialogue());
             Debug.Log("Collider Guy Thorpe");
 
+            spritePlacement++; 
+
             // Disable player movement and rotation while dialogue is active
             if (fpCharacterController != null)
             {
@@ -126,6 +132,8 @@ public class NPCInteractDialogue : MonoBehaviour
     {
         string currentText = Dialogue[placement]; // Get the dialogue text for the current placement
         string displayedText = "";
+
+        
         int textIndex = 0;
         text2TMP.text = displayedText;
 
@@ -153,18 +161,6 @@ public class NPCInteractDialogue : MonoBehaviour
         }
 
         // Typing finished, check for options to be displayed
-        if (Dialogue[placement].Contains("I'm grumpy."))
-        {
-            happySprite.SetActive(true);
-            ExtraSpriteBlinking.SetActive(false);
-            neutralSprite.SetActive(false);
-            ExtraSprite.SetActive(false);
-            optionsPanel.SetActive(true);
-            neutralSpriteFadeIn.SetActive(false);
-            optionsDisplayed = true;
-            Cursor.visible = true;
-        }
-
         if (Dialogue[placement].Contains("Anyways, it would be a nice opportunity to put that fancy camera of yours to use!"))
         {
             happySprite.SetActive(true);
