@@ -147,7 +147,7 @@ public class NPCInteractDialogue : MonoBehaviour
 
         if (Dialogue[placement].Contains("START DIALOGUE"))
         {
-            ExtraSprite.SetActive(true);
+            ExtraSprite.SetActive(false);
             neutralSprite.SetActive(false);
             happySprite.SetActive(false);
             neutralSpriteFadeIn.SetActive(false);
@@ -161,12 +161,12 @@ public class NPCInteractDialogue : MonoBehaviour
         }
 
         // Typing finished, check for options to be displayed
-        if (Dialogue[placement].Contains("Anyways, it would be a nice opportunity to put that fancy camera of yours to use!"))
+        if (Dialogue[placement].Contains("It is a pleasure to meet you sir, thank you for commissioning us."))
         {
             happySprite.SetActive(true);
             ExtraSpriteBlinking.SetActive(false);
             neutralSpriteFadeIn.SetActive(false);
-            neutralSprite.SetActive(false);
+            neutralSprite.SetActive(true);
             ExtraSprite.SetActive(false);
             optionsPanel.SetActive(false);
         }
@@ -176,6 +176,18 @@ public class NPCInteractDialogue : MonoBehaviour
             happySprite.SetActive(false);
             ExtraSpriteBlinking.SetActive(false);
             neutralSpriteFadeIn.SetActive(true);
+            neutralDoloresSprite.SetActive(false);
+            neutralSpriteFadeIn.SetActive(false);
+            neutralSprite.SetActive(false);
+            ExtraSprite.SetActive(false);
+            optionsPanel.SetActive(false);
+        }
+
+        if (Dialogue[placement].Contains("Yes, yes, let us get to business."))
+        {
+            happySprite.SetActive(false);
+            ExtraSpriteBlinking.SetActive(false);
+            neutralSprite.SetActive(true);
             neutralDoloresSprite.SetActive(false);
             neutralSpriteFadeIn.SetActive(false);
             neutralSprite.SetActive(false);
