@@ -20,9 +20,9 @@ public class NPCInteractDialogue : MonoBehaviour
     public GameObject neutralDoloresSpriteFadeIn;
     public GameObject neutralDoloresSprite;
     public GameObject happyDoloresSprite;
-    public GameObject surpriseDoloresSprite; 
+    public GameObject surpriseDoloresSprite;
     public GameObject extraDoloresSprite;
-    public GameObject extraDoloresSpriteBlinking; 
+    public GameObject extraDoloresSpriteBlinking;
 
 
     public GameObject pressE;
@@ -50,7 +50,7 @@ public class NPCInteractDialogue : MonoBehaviour
 
     [Header("Placement")]
     public GameObject[] spriteOption;
-    public int spritePlacement; 
+    public int spritePlacement;
 
     public FPCharacterController fpCharacterController; // Reference to the FPCharacterController script
     private bool optionsDisplayed;
@@ -97,7 +97,7 @@ public class NPCInteractDialogue : MonoBehaviour
             StartCoroutine(TypeDialogue());
             Debug.Log("Collider Guy Thorpe");
 
-            spritePlacement++; 
+            spritePlacement++;
 
             // Disable player movement and rotation while dialogue is active
             if (fpCharacterController != null)
@@ -133,7 +133,7 @@ public class NPCInteractDialogue : MonoBehaviour
         string currentText = Dialogue[placement]; // Get the dialogue text for the current placement
         string displayedText = "";
 
-        
+
         int textIndex = 0;
         text2TMP.text = displayedText;
 

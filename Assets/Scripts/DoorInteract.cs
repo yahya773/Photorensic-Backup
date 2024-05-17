@@ -5,37 +5,32 @@ using UnityEngine;
 public class DoorInteract : MonoBehaviour
 {
     [Header("Animation")]
-    [SerializeField] public Animator OpenDoor;
-    [SerializeField] public Animator CloseDoor; 
-
-    [Header("UI Interact")]
-    [SerializeField] private GameObject InteractE;
+    [SerializeField] private Animator myDoor = null;
 
     [Header("Door")]
-    [SerializeField] public GameObject Door; 
+    [SerializeField] private bool openTrigger = false;
+    [SerializeField] private bool closeTrigger = false;
 
-    private void Start()
+    [SerializeField] private string doorOpen = "DoorOpen";
+    [SerializeField] private string doorClose = "DoorClose"; 
+
+    private void OnTriggerEnter(Collider other)
     {
-        InteractE.SetActive(false);
-        Animator animator = Door.GetComponent<Animator>();
-    }
-
-    
-    private void OnTriggerEnter (Collider other) 
-    {
-        Debug.Log("EnterDoor"); 
-        InteractE.SetActive(true); 
-
-        if(Input.GetKey(KeyCode.E)) 
+        if (other.CompareTag("Player"))
         {
-            OpenDoor.Play("OpenDoor");
-            Debug.Log("AnimationDoorPlay"); 
+            if (openTrigger)
+            {
+                myDoor.Play("DoorOpen", 0, 0.0f);
+                gameObject.SetActive(false); 
+            }
+
+            else if (closeTrigger)
+            {
+                myDoor.Play("DoorClose2", 0, 0.0f); 
+                gameObject.SetActive(false);
+            }
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        InteractE.SetActive(false);
-        Debug.Log("LeaveDoor"); 
-    }
+
 }
