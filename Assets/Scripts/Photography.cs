@@ -27,7 +27,18 @@ public class Photography : MonoBehaviour
 
     [Header("Photography Switch")] 
     [SerializeField] private GameObject gameView;
-    [SerializeField] private GameObject cameraView; 
+    [SerializeField] private GameObject cameraView;
+
+    [Header("Show Photo Puzzle")]
+    [SerializeField] private GameObject SlidingPhotoPuzzle;
+
+    [Header("Character Controller")]
+    public FPCharacterController fpCharacterController;
+
+    [Header("Collider Trigger")]
+    [SerializeField] public GameObject ColliderTrigger;
+    private bool Collider; 
+    
 
     private bool AccessCamera = false;
 
@@ -39,6 +50,10 @@ public class Photography : MonoBehaviour
         PhotoFrame.SetActive(false);
         PhotoFrame2.SetActive(false);
         cameraView.SetActive(false);
+        SlidingPhotoPuzzle.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update()
@@ -94,7 +109,15 @@ public class Photography : MonoBehaviour
         PhotoFrame.SetActive(true);
         FlashUI.SetActive(true);
         StartCoroutine(CameraFlashEffect());
+        SlidingPhotoPuzzle.SetActive(true); 
         FadingAnimation.Play("Flash");
+        Cursor.lockState = CursorLockMode.None;
+        if (fpCharacterController != null)
+        {
+            fpCharacterController.SetMovementEnabled(false);
+            fpCharacterController.SetRotationEnabled(false);
+        }
+        Cursor.visible = true; 
         StartCoroutine(HidePhotoFrameAfterDelay(5f));
     }
 
@@ -116,10 +139,24 @@ public class Photography : MonoBehaviour
         cameraAudio.Play();
     }
 
+    public void PuzzleSolved()
+    {
+
+    }
+
     public void RemovePhoto()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false; 
         PhotoFrame.SetActive(false);
         viewingPhoto = false;
         CameraUI.SetActive(true);
+        SlidingPhotoPuzzle.SetActive(false);
+
+        if (fpCharacterController != null)
+        {
+            fpCharacterController.SetMovementEnabled(true);
+            fpCharacterController.SetRotationEnabled(true);
+        }
     }
 }
