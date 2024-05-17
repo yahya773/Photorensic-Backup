@@ -1,70 +1,43 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SlidingPhotoPuzzle : MonoBehaviour
+public class SlidingImagePuzzle : MonoBehaviour
 {
     public Button[] buttons; // Array of puzzle piece buttons
-    public Image[] puzzleImages; // Array of puzzle piece images
-    public Image emptyPiece; // Image representing the empty space
+    public Image emptySpace; // Empty space image
 
-    private int emptyIndex; // Index of the empty space
-    private int[] puzzlePositions; // Array to hold puzzle piece indices
+    private int emptyIndex = 8; // Index of the empty space, initially set to 8
+    private Sprite[] initialSprites; // Initial sprites for the puzzle pieces
 
     void Start()
     {
+        StoreInitialSprites();
 
-        puzzlePositions = new int[buttons.Length];
+        // Swap images of elements 7 and 8 at the start
+        SwapSprites(7, 8);
 
-      
         for (int i = 0; i < buttons.Length; i++)
         {
-            puzzlePositions[i] = i;
-            buttons[i].image.sprite = puzzleImages[i].sprite;
-            int index = i; 
+            int index = i;
             buttons[i].onClick.AddListener(() => OnButtonClick(index));
         }
-
-  
-        emptyIndex = buttons.Length - 1;
-
-     
-        ShufflePuzzle();
     }
 
-    void ShufflePuzzle()
+    void StoreInitialSprites()
     {
-  
-        for (int i = 0; i < puzzlePositions.Length; i++)
+        initialSprites = new Sprite[buttons.Length];
+        for (int i = 0; i < buttons.Length; i++)
         {
-            int temp = puzzlePositions[i];
-            int randomIndex = Random.Range(i, puzzlePositions.Length);
-            puzzlePositions[i] = puzzlePositions[randomIndex];
-            puzzlePositions[randomIndex] = temp;
-        }
-
-        
-        RefreshButtonPositions();
-
-
-        if (IsPuzzleSolved())
-        {
-     
-            ShufflePuzzle();
+            initialSprites[i] = buttons[i].image.sprite;
         }
     }
 
-    void OnButtonClick(int buttonIndex)
+    void OnButtonClick(int clickedIndex)
     {
-        if (CanMove(buttonIndex))
+        if (CanMove(clickedIndex))
         {
-         
-            int temp = puzzlePositions[buttonIndex];
-            puzzlePositions[buttonIndex] = puzzlePositions[emptyIndex];
-            puzzlePositions[emptyIndex] = temp;
-
-            emptyIndex = buttonIndex;
-
-            RefreshButtonPositions();
+            SwapSprites(clickedIndex, emptyIndex);
+            emptyIndex = clickedIndex;
 
             if (IsPuzzleSolved())
             {
@@ -73,37 +46,28 @@ public class SlidingPhotoPuzzle : MonoBehaviour
         }
     }
 
-    bool CanMove(int buttonIndex)
+    bool CanMove(int clickedIndex)
     {
-        // Check if clicked button is adjacent to the empty space
-        if (buttonIndex % 3 != 0 && puzzlePositions[buttonIndex - 1] == buttons.Length - 1) // Check left
-            return true;
-        if (buttonIndex % 3 != 2 && puzzlePositions[buttonIndex + 1] == buttons.Length - 1) // Check right
-            return true;
-        if (buttonIndex / 3 != 0 && puzzlePositions[buttonIndex - 3] == buttons.Length - 1) // Check up
-            return true;
-        if (buttonIndex / 3 != 2 && puzzlePositions[buttonIndex + 3] == buttons.Length - 1) // Check down
-            return true;
+        int rowClicked = clickedIndex / 3;
+        int colClicked = clickedIndex % 3;
+        int rowEmpty = emptyIndex / 3;
+        int colEmpty = emptyIndex % 3;
 
-        return false;
+        return Mathf.Abs(rowClicked - rowEmpty) + Mathf.Abs(colClicked - colEmpty) == 1;
     }
 
-    void RefreshButtonPositions()
+    void SwapSprites(int index1, int index2)
     {
-        for (int i = 0; i < buttons.Length; i++)
-        {
-            int puzzleIndex = puzzlePositions[i];
-            Vector3 newPosition = buttons[puzzleIndex].transform.localPosition;
-            buttons[i].transform.localPosition = newPosition;
-        }
+        Sprite tempSprite = buttons[index1].image.sprite;
+        buttons[index1].image.sprite = buttons[index2].image.sprite;
+        buttons[index2].image.sprite = tempSprite;
     }
 
     bool IsPuzzleSolved()
     {
-        // Check if puzzle positions match the correct order
         for (int i = 0; i < buttons.Length; i++)
         {
-            if (puzzlePositions[i] != i)
+            if (buttons[i].image.sprite != initialSprites[i])
             {
                 return false;
             }
