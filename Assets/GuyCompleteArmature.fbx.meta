@@ -3,7 +3,62 @@ guid: 75ed4577e353e044d9ab94804e5a8ccd
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GreenInner
+    second: {fileID: 2100000, guid: 812f6481e882f884785cbda0ac39c266, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GuyFluffReUV
+    second: {fileID: 2100000, guid: 175555beacf44d242a457a975cf55d49, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GuyHair
+    second: {fileID: 2100000, guid: 33316d2f37739a448a81c6e7dfb644b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GuyJacket
+    second: {fileID: 2100000, guid: 599b0bfffcf60b04d9b50fc4003e8d6e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GuyShoes
+    second: {fileID: 2100000, guid: 864ace2affaaa4e46abe684773a96440, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GuySkin
+    second: {fileID: 2100000, guid: be6922c8cc2718f45a9bb79cf91a9e9a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GuyTie
+    second: {fileID: 2100000, guid: 75392f5722c857740b4f431febb7771f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GuyTrousers
+    second: {fileID: 2100000, guid: 5e748a2ef686e5544bf13b6ff27b81d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GuysShirt
+    second: {fileID: 2100000, guid: 53e6ecb061f2fd043a79378d3c7384a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GuysShirt.003
+    second: {fileID: 2100000, guid: 8e325fa781899464db6a43fe3c4d04b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: standardSurface1.003
+    second: {fileID: 2100000, guid: 35afbb1eeb918844e8ee7d1797aba087, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
