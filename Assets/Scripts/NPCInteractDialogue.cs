@@ -76,7 +76,6 @@ public class NPCInteractDialogue : MonoBehaviour
         neutralDoloresSprite.SetActive(false);
         happyDoloresSprite.SetActive(false);
         surpriseDoloresSprite.SetActive(false);
-        GuyThorpe2.SetActive(false); 
         extraDoloresSprite.SetActive(false);
         extraDoloresSpriteBlinking.SetActive(false);
         optionsPanel.SetActive(false);
@@ -139,13 +138,13 @@ public class NPCInteractDialogue : MonoBehaviour
             neutralSprite.SetActive(false);
             happySprite.SetActive(false);
             neutralSpriteFadeIn.SetActive(false);
-            neutralSpriteFadeIn.SetActive(false);
             neutralDoloresSpriteFadeIn.SetActive(false);
             neutralDoloresSprite.SetActive(false);
             happyDoloresSprite.SetActive(false);
             surpriseDoloresSprite.SetActive(false);
             extraDoloresSprite.SetActive(false);
             extraDoloresSpriteBlinking.SetActive(false);
+            GuyThorpe2.SetActive(false); 
         }
 
         if (Dialogue[placement].Contains("(surprised)"))
@@ -195,6 +194,78 @@ public class NPCInteractDialogue : MonoBehaviour
             ExtraSprite.SetActive(false);
             optionsPanel.SetActive(false);
         }
+
+        if (Dialogue[placement].Contains("I was quite fond of this vase, but alas, it’s come to meet its end."))
+        {
+            happySprite.SetActive(false);
+            ExtraSpriteBlinking.SetActive(true);
+            neutralDoloresSpriteFadeIn.SetActive(false);
+            neutralDoloresSprite.SetActive(false);
+            happyDoloresSprite.SetActive(false);
+            surpriseDoloresSprite.SetActive(false);
+            extraDoloresSprite.SetActive(false);
+            extraDoloresSpriteBlinking.SetActive(false);
+            neutralDoloresSprite.SetActive(false);
+            neutralSpriteFadeIn.SetActive(false);
+            neutralSprite.SetActive(false);
+            ExtraSprite.SetActive(false);
+            optionsPanel.SetActive(false);
+        }
+
+        if (Dialogue[placement].Contains("It was probably not used too, there are no flowers or stains on the surface."))
+        {
+            happySprite.SetActive(false);
+            ExtraSpriteBlinking.SetActive(false);
+            neutralDoloresSpriteFadeIn.SetActive(true);
+            neutralDoloresSprite.SetActive(false);
+            happyDoloresSprite.SetActive(false);
+            surpriseDoloresSprite.SetActive(false);
+            extraDoloresSprite.SetActive(false);
+            extraDoloresSpriteBlinking.SetActive(false);
+            neutralDoloresSprite.SetActive(false);
+            neutralSpriteFadeIn.SetActive(false);
+            neutralSprite.SetActive(false);
+            ExtraSprite.SetActive(false);
+            optionsPanel.SetActive(false);
+        }
+
+        if (Dialogue[placement].Contains("I'll leave you to it."))
+        {
+            happySprite.SetActive(false);
+            ExtraSpriteBlinking.SetActive(false);
+            neutralDoloresSpriteFadeIn.SetActive(false);
+            neutralDoloresSprite.SetActive(true);
+            happyDoloresSprite.SetActive(false);
+            surpriseDoloresSprite.SetActive(false);
+            extraDoloresSprite.SetActive(false);
+            extraDoloresSpriteBlinking.SetActive(false);
+            GuyThorpe2.SetActive(false); 
+            neutralDoloresSprite.SetActive(false);
+            neutralSpriteFadeIn.SetActive(false);
+            neutralSprite.SetActive(false);
+            ExtraSprite.SetActive(false);
+            optionsPanel.SetActive(false);
+        }
+
+        if (Dialogue[placement].Contains("What a shame, it was a pretty vase. A bit of a weird position to place it, but who am I to judge."))
+        {
+            happySprite.SetActive(false);
+            ExtraSpriteBlinking.SetActive(false);
+            neutralDoloresSpriteFadeIn.SetActive(false);
+            neutralDoloresSprite.SetActive(false);
+            happyDoloresSprite.SetActive(false);
+            surpriseDoloresSprite.SetActive(false);
+            extraDoloresSpriteBlinking.SetActive(true);
+            extraDoloresSprite.SetActive(false);
+            extraDoloresSpriteBlinking.SetActive(false);
+            neutralDoloresSprite.SetActive(false);
+            neutralSpriteFadeIn.SetActive(false);
+            neutralSprite.SetActive(false);
+            ExtraSprite.SetActive(false);
+            optionsPanel.SetActive(false);
+        }
+
+
         if (Dialogue[placement].Contains("Yes, yes, let us get to business."))
         { happySprite.SetActive(false);
             ExtraSpriteBlinking.SetActive(false);
@@ -329,12 +400,22 @@ public class NPCInteractDialogue : MonoBehaviour
             fpCharacterController.SetMovementEnabled(true);
             fpCharacterController.SetRotationEnabled(true);
             template.SetActive(false);
-            GuyThorpe.SetActive(false); 
+            GuyThorpe.SetActive(false);
+            GuyThorpe2.SetActive(true); 
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
 
         if (Dialogue[placement].Contains("*GO TO THE LIVING ROOM*"))
+        {
+            fpCharacterController.SetMovementEnabled(true);
+            fpCharacterController.SetRotationEnabled(true);
+            template.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
+        if (Dialogue[placement].Contains("*USE CAMERA*"))
         {
             fpCharacterController.SetMovementEnabled(true);
             fpCharacterController.SetRotationEnabled(true);
