@@ -21,7 +21,10 @@ namespace Photorensic
         public GameObject ExtraSpriteBlinking;
 
         public GameObject pressE;
-        public GameObject template; 
+        public GameObject template;
+
+        public GameObject caseFile;
+        public GameObject caseFile2; 
 
         public float textSpeed = 0.05f; 
 
@@ -59,7 +62,9 @@ namespace Photorensic
             ExtraSpriteBlinking.SetActive(false); 
             surpriseSprite.SetActive(false);
             optionsPanel.SetActive(false);
-            MiscellionousPanel.SetActive(false); 
+            MiscellionousPanel.SetActive(false);
+            caseFile.SetActive(false);
+            caseFile2.SetActive(false); 
 
 
 
@@ -114,6 +119,7 @@ namespace Photorensic
                 neutralSprite.SetActive(false);
                 happySprite.SetActive(false);
                 neutralSpriteFadeIn.SetActive(false);
+                caseFile.SetActive(true); 
             }
 
             if (Dialogue[placement].Contains("Right, newbie!"))
@@ -121,14 +127,16 @@ namespace Photorensic
                 ExtraSprite.SetActive(false);
                 neutralSprite.SetActive(false);
                 happySprite.SetActive(false);
-                neutralSpriteFadeIn.SetActive(true);
+                neutralSpriteFadeIn.SetActive(true); 
             }
 
             if (Dialogue[placement].Contains("It’s a man in his late 60s. Sir Guy Thorpe."))
             {
                 ExtraSpriteBlinking.SetActive(true);
                 neutralSprite.SetActive(false);
-                ExtraSprite.SetActive(false); 
+                ExtraSprite.SetActive(false);
+                caseFile2.SetActive(true);
+                caseFile.SetActive(false); 
             }
 
             // Typing finished, check for options to be displayed
@@ -192,6 +200,8 @@ namespace Photorensic
                 neutralSprite.SetActive(false);
                 ExtraSprite.SetActive(false);
                 surpriseSprite.SetActive(true);
+                caseFile.SetActive(false);
+                caseFile2.SetActive(false); 
             }
 
 
