@@ -60,7 +60,7 @@ namespace Photorensic
         {
             Debug.Log("isPlayerInsideCollider: " + isPlayerInsideCollider);
             Debug.Log("AccessCamera: " + AccessCamera);
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetKey(KeyCode.R))
             {
                 if (AccessCamera)
                 {
