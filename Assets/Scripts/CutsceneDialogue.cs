@@ -3,8 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
-using Unity.VisualScripting;
-using static UnityEditor.PlayerSettings;
+
 
 namespace Photorensic
 {

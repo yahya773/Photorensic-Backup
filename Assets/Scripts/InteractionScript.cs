@@ -1,43 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class InteractionScript : MonoBehaviour
+namespace Photorensic
 {
-
-    public GameObject InteractE;
-    private bool triggerenter;
-
-
-    public void Start()
+    public class InteractionScript : MonoBehaviour
     {
-        InteractE.SetActive(false);
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        InteractE.SetActive(true);
-        Debug.Log("EnterCollider");
-        triggerenter = true;
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        InteractE.SetActive(false);
-        Debug.Log("ExitCollider");
-        triggerenter = false;
-    }
+        public GameObject InteractE;
+        private bool triggerenter;
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E) && triggerenter)
+
+        public void Start()
         {
-            triggerenter = true; 
-            SceneManager.LoadScene("Cutscene Intro");
-            Debug.Log("ChangeScene"); 
+            InteractE.SetActive(false);
         }
-    }
+        private void OnTriggerEnter(Collider other)
+        {
+            InteractE.SetActive(true);
+            Debug.Log("EnterCollider");
+            triggerenter = true;
+        }
 
+        private void OnTriggerExit(Collider other)
+        {
+            InteractE.SetActive(false);
+            Debug.Log("ExitCollider");
+            triggerenter = false;
+        }
+
+        public void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.E) && triggerenter)
+            {
+                triggerenter = true;
+                SceneManager.LoadScene("Cutscene Intro");
+                Debug.Log("ChangeScene");
+            }
+        }
+
+    }
 }
