@@ -38,7 +38,7 @@ namespace Photorensic
 
         [Header("Collider Trigger")]
         [SerializeField] public Collider specificCollider; // Ensure this is assigned in the Inspector
-        private bool isPlayerInsideCollider = false;
+        [SerializeField] private bool isPlayerInsideCollider = true;
 
         private bool AccessCamera = false;
 
